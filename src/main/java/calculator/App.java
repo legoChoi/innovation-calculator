@@ -1,13 +1,13 @@
 package calculator;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class App {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int[] db = new int[10];
+        final int MAX_DB_SIZE = 3;
+        int[] db = new int[MAX_DB_SIZE];
         int curIdx = 0;
 
         while (true) {
@@ -42,8 +42,23 @@ public class App {
             }
 
             System.out.println("결과: " + result);
+
+            if (curIdx == MAX_DB_SIZE) {
+                for (int i = 0; i < MAX_DB_SIZE - 1; i++) {
+                    db[i] = db[i + 1];
+                }
+
+                curIdx = MAX_DB_SIZE - 1;
+            }
+
             db[curIdx] = result;
             curIdx++;
+
+            for (int i : db) {
+                System.out.print(i + " ");
+            }
+
+            System.out.println();
 
             System.out.print("더 계산하시겠습니까? (exit 입력 시 종료) ");
             sc.nextLine();
