@@ -9,25 +9,39 @@ public class App {
         Calculator calculator = new Calculator();
 
         while (true) {
-            System.out.print("첫 번째 숫자를 입력하세요: ");
-            int a = sc.nextInt();
+            System.out.print("어떤 계산을 진행하시겠습니까? (normal: 일반, circle: 원 넓이 구하기) ");
+            String typeCommand = sc.nextLine();
 
-            System.out.print("두 번째 숫자를 입력하세요: ");
-            int b = sc.nextInt();
+            if (typeCommand.equals("normal")) {
+                System.out.print("첫 번째 숫자를 입력하세요: ");
+                int a = sc.nextInt();
 
-            System.out.print("사칙연산 기호를 입력하세요: ");
-            char op = sc.next().charAt(0);
+                System.out.print("두 번째 숫자를 입력하세요: ");
+                int b = sc.nextInt();
 
-            int result = calculator.calculate(a, b, op);
+                System.out.print("사칙연산 기호를 입력하세요: ");
+                char op = sc.next().charAt(0);
 
-            System.out.println("결과: " + result);
-            calculator.save(result);
+                int result = calculator.calculate(a, b, op);
+
+                System.out.println("결과: " + result);
+                calculator.saveResult(result);
+            }
+
+            if (typeCommand.equals("circle")) {
+                System.out.print("반지름을 입력하세요: ");
+                int radius = sc.nextInt();
+
+                double result = calculator.calculateCircleArea(radius);
+                calculator.saveCircleAreaResult(result);
+            }
+
+            sc.nextLine();
 
             System.out.print("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제) ");
-            sc.nextLine();
-            
+
             if (sc.nextLine().equals("remove")) {
-                calculator.removeFirst();
+                calculator.removeFirst(typeCommand);
             }
 
             System.out.print("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회) ");
