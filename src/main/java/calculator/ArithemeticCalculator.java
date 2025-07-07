@@ -5,10 +5,11 @@ import java.util.List;
 
 public class ArithemeticCalculator extends Calculator {
 
-    private final AddOperator addOperator;
-    private final SubtractOperator subtractOperator;
-    private final MultiplyOperator multiplyOperator;
-    private final DivideOperator divideOperator;
+    private final Operator addOperator;
+    private final Operator subtractOperator;
+    private final Operator multiplyOperator;
+    private final Operator divideOperator;
+    private final Operator modOperator;
 
     private double a;
     private double b;
@@ -16,11 +17,12 @@ public class ArithemeticCalculator extends Calculator {
 
     private final List<Double> db;
 
-    public ArithemeticCalculator(AddOperator addOperator, SubtractOperator subtractOperator, MultiplyOperator multiplyOperator, DivideOperator divideOperator) {
+    public ArithemeticCalculator(AddOperator addOperator, SubtractOperator subtractOperator, MultiplyOperator multiplyOperator, DivideOperator divideOperator, ModOperator modOperator) {
         this.addOperator = addOperator;
         this.subtractOperator = subtractOperator;
         this.multiplyOperator = multiplyOperator;
         this.divideOperator = divideOperator;
+        this.modOperator = modOperator;
         this.db = new ArrayList<>();
     }
 
@@ -37,6 +39,7 @@ public class ArithemeticCalculator extends Calculator {
             case '-' -> subtractOperator.operate(a, b);
             case '*' -> multiplyOperator.operate(a, b);
             case '/' -> divideOperator.operate(a, b);
+            case '%' -> op == '%' ? '%' : '+';
             default -> throw new ArithmeticException("유효하지 않은 연산자입니다.");
         };
     }

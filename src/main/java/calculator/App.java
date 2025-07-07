@@ -10,7 +10,8 @@ public class App {
                 new AddOperator(),
                 new SubtractOperator(),
                 new MultiplyOperator(),
-                new DivideOperator()
+                new DivideOperator(),
+                new ModOperator()
         );
         CircleCalculator circleCalculator = new CircleCalculator();
 
