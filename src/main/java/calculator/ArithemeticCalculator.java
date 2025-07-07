@@ -13,7 +13,7 @@ public class ArithemeticCalculator extends Calculator {
 
     private double a;
     private double b;
-    private char op;
+    private OperatorType operatorType;
 
     private final List<Double> db;
 
@@ -29,13 +29,11 @@ public class ArithemeticCalculator extends Calculator {
     public void setValues(double a, double b, char op) {
         this.a = a;
         this.b = b;
-        this.op = op;
+        operatorType = OperatorType.of(op);
     }
 
     @Override
     public double calculate() {
-        OperatorType operatorType = OperatorType.of(op);
-
         return switch (operatorType) {
             case PLUS -> addOperator.operate(a, b);
             case SUBTRACT -> subtractOperator.operate(a, b);
