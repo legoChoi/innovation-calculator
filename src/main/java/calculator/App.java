@@ -1,11 +1,14 @@
 package calculator;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class App {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        int[] db = new int[10];
+        int curIdx = 0;
 
         while (true) {
             System.out.print("첫 번째 숫자를 입력하세요: ");
@@ -39,6 +42,8 @@ public class App {
             }
 
             System.out.println("결과: " + result);
+            db[curIdx] = result;
+            curIdx++;
 
             System.out.print("더 계산하시겠습니까? (exit 입력 시 종료) ");
             sc.nextLine();
