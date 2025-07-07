@@ -34,13 +34,14 @@ public class ArithemeticCalculator extends Calculator {
 
     @Override
     public double calculate() {
-        return switch (op) {
-            case '+' -> addOperator.operate(a, b);
-            case '-' -> subtractOperator.operate(a, b);
-            case '*' -> multiplyOperator.operate(a, b);
-            case '/' -> divideOperator.operate(a, b);
-            case '%' -> op == '%' ? '%' : '+';
-            default -> throw new ArithmeticException("유효하지 않은 연산자입니다.");
+        OperatorType operatorType = OperatorType.of(op);
+
+        return switch (operatorType) {
+            case PLUS -> addOperator.operate(a, b);
+            case SUBTRACT -> subtractOperator.operate(a, b);
+            case MULTIPLY -> multiplyOperator.operate(a, b);
+            case DIVIDE -> divideOperator.operate(a, b);
+            case MODULAR -> modOperator.operate(a, b);
         };
     }
 
