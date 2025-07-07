@@ -1,14 +1,14 @@
 package calculator;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class App {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        final int MAX_DB_SIZE = 3;
-        int[] db = new int[MAX_DB_SIZE];
-        int curIdx = 0;
+        List<Integer> db = new ArrayList<>();
 
         while (true) {
             System.out.print("첫 번째 숫자를 입력하세요: ");
@@ -42,17 +42,14 @@ public class App {
             }
 
             System.out.println("결과: " + result);
+            db.add(result);
 
-            if (curIdx == MAX_DB_SIZE) {
-                for (int i = 0; i < MAX_DB_SIZE - 1; i++) {
-                    db[i] = db[i + 1];
-                }
-
-                curIdx = MAX_DB_SIZE - 1;
+            System.out.print("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제) ");
+            sc.nextLine();
+            
+            if (sc.nextLine().equals("remove")) {
+                db.remove(0);
             }
-
-            db[curIdx] = result;
-            curIdx++;
 
             for (int i : db) {
                 System.out.print(i + " ");
@@ -61,13 +58,13 @@ public class App {
             System.out.println();
 
             System.out.print("더 계산하시겠습니까? (exit 입력 시 종료) ");
-            sc.nextLine();
-            String command = sc.nextLine();
+            System.out.println();
 
-            if (command.equals("exit")) {
+            if (sc.nextLine().equals("exit")) {
                 break;
             }
         }
+
 
         sc.close();
     }
