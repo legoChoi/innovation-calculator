@@ -51,18 +51,23 @@ public class App {
                 db.remove(0);
             }
 
-            for (int i : db) {
-                System.out.print(i + " ");
+            System.out.print("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회) ");
+
+            if (sc.nextLine().equals("inquiry")) {
+                for (int i : db) {
+                    System.out.print(i + " ");
+                }
+
+                System.out.println();
             }
 
-            System.out.println();
-
             System.out.print("더 계산하시겠습니까? (exit 입력 시 종료) ");
-            System.out.println();
 
             if (sc.nextLine().equals("exit")) {
                 break;
             }
+
+            System.out.println();
         }
 
 
