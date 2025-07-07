@@ -5,10 +5,16 @@ import java.util.Scanner;
 public class App {
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        ArithemeticCalculator arithemeticCalculator = new ArithemeticCalculator();
+
+        ArithemeticCalculator arithemeticCalculator = new ArithemeticCalculator(
+                new AddOperator(),
+                new SubtractOperator(),
+                new MultiplyOperator(),
+                new DivideOperator()
+        );
         CircleCalculator circleCalculator = new CircleCalculator();
 
+        Scanner sc = new Scanner(System.in);
         double result;
 
         while (true) {

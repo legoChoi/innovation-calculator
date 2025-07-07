@@ -5,13 +5,22 @@ import java.util.List;
 
 public class ArithemeticCalculator extends Calculator {
 
+    private final AddOperator addOperator;
+    private final SubtractOperator subtractOperator;
+    private final MultiplyOperator multiplyOperator;
+    private final DivideOperator divideOperator;
+
     private double a;
     private double b;
     private char op;
 
     private final List<Double> db;
 
-    public ArithemeticCalculator() {
+    public ArithemeticCalculator(AddOperator addOperator, SubtractOperator subtractOperator, MultiplyOperator multiplyOperator, DivideOperator divideOperator) {
+        this.addOperator = addOperator;
+        this.subtractOperator = subtractOperator;
+        this.multiplyOperator = multiplyOperator;
+        this.divideOperator = divideOperator;
         this.db = new ArrayList<>();
     }
 
@@ -23,26 +32,13 @@ public class ArithemeticCalculator extends Calculator {
 
     @Override
     public double calculate() {
-        switch (op) {
-            case '+':
-                return a + b;
-
-            case '-':
-                return a - b;
-
-            case '*':
-                return a * b;
-
-            case '/':
-                if (b == 0) {
-                    throw new ArithmeticException("0으로 나눌 수 없습니다.");
-                }
-
-                return a / b;
-
-            default:
-                throw new ArithmeticException("유효하지 않은 연산자입니다.");
-        }
+        return switch (op) {
+            case '+' -> addOperator.operate(a, b);
+            case '-' -> subtractOperator.operate(a, b);
+            case '*' -> multiplyOperator.operate(a, b);
+            case '/' -> divideOperator.operate(a, b);
+            default -> throw new ArithmeticException("유효하지 않은 연산자입니다.");
+        };
     }
 
     @Override
