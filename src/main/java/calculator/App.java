@@ -1,14 +1,11 @@
 package calculator;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class App {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        List<Integer> db = new ArrayList<>();
         Calculator calculator = new Calculator();
 
         while (true) {
@@ -24,23 +21,19 @@ public class App {
             int result = calculator.calculate(a, b, op);
 
             System.out.println("결과: " + result);
-            db.add(result);
+            calculator.save(result);
 
             System.out.print("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제) ");
             sc.nextLine();
             
             if (sc.nextLine().equals("remove")) {
-                db.remove(0);
+                calculator.removeFirst();
             }
 
             System.out.print("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회) ");
 
             if (sc.nextLine().equals("inquiry")) {
-                for (int i : db) {
-                    System.out.print(i + " ");
-                }
-
-                System.out.println();
+                calculator.printList();
             }
 
             System.out.print("더 계산하시겠습니까? (exit 입력 시 종료) ");

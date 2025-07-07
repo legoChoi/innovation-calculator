@@ -29,4 +29,20 @@ public class Calculator {
                 throw new ArithmeticException("유효하지 않은 연산자입니다.");
         }
     }
+
+    public void save(int result) {
+        db.add(result);
+    }
+
+    public void removeFirst() {
+        db.remove(0);
+    }
+
+    public void printList() {
+        for (int i : db) {
+            System.out.print(i + " ");
+        }
+
+        System.out.println();
+    }
 }
