@@ -8,11 +8,11 @@ public class CircleCalculator<T extends Number> extends Calculator {
     private T radius;
 
     private final Class<T> type;
-    private final List<T> db;
+    private final List<T> memory;
 
     public CircleCalculator(Class<T> type) {
         this.type = type;
-        this.db = new ArrayList<>();
+        this.memory = new ArrayList<>();
     }
 
     public void setValues(T radius) {
@@ -21,25 +21,24 @@ public class CircleCalculator<T extends Number> extends Calculator {
 
     @Override
     public T calculate() {
-        double target = Math.PI * radius.doubleValue() * radius.doubleValue();
-        return NumberTypeConverter.convertTo(target, type);
+        double target = Math.PI * this.radius.doubleValue() * this.radius.doubleValue();
+        return NumberTypeConverter.convertTo(target, this.type);
     }
 
     @Override
     public void saveResult(Number result) {
-        T target = NumberTypeConverter.convertTo(result, type);
-        this.db.add(target);
+        T target = NumberTypeConverter.convertTo(result, this.type);
+        this.memory.add(target);
     }
 
-
     @Override
-    public void removeFirst(String type) {
-        db.remove(0);
+    public void removeFirst() {
+        this.memory.remove(0);
     }
 
     @Override
     public void printList() {
-        db.forEach(num -> {
+        this.memory.forEach(num -> {
             System.out.print(num + " ");
         });
 
@@ -48,7 +47,7 @@ public class CircleCalculator<T extends Number> extends Calculator {
 
     @Override
     public void printBiggerListThan(Number target) {
-        db.forEach(num -> {
+        this.memory.forEach(num -> {
             if (num.doubleValue() > target.doubleValue()) {
                 System.out.print(num + " ");
             }

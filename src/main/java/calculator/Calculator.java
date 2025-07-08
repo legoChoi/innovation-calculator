@@ -6,7 +6,7 @@ public abstract class Calculator<T extends Number> {
 
     public abstract void saveResult(T result);
 
-    public abstract void removeFirst(String type);
+    public abstract void removeFirst();
 
     public abstract void printList();
 

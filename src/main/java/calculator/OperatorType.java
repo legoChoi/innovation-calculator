@@ -10,20 +10,20 @@ public enum OperatorType {
     DIVIDE('/'),
     MODULAR('%');
 
+    private final char symbol;
+
     OperatorType(char symbol) {
         this.symbol = symbol;
     }
 
-    private final char symbol;
-
-    public static OperatorType of(char op) {
+    public static OperatorType of(char operator) {
         return Arrays.stream(OperatorType.values())
-                .filter(operatorType -> operatorType.getSymbol() == op)
+                .filter(operatorType -> operatorType.getSymbol() == operator)
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("유효하지 않은 연산자입니다."));
     }
 
     private char getSymbol() {
-        return symbol;
+        return this.symbol;
     }
 }

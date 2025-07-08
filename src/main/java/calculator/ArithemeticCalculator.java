@@ -16,7 +16,7 @@ public class ArithemeticCalculator<T extends Number> extends Calculator {
     private OperatorType operatorType;
 
     private final Class<T> type;
-    private final List<T> db;
+    private final List<T> memory;
 
     public ArithemeticCalculator(AddOperator<T> addOperator, SubtractOperator<T> subtractOperator, MultiplyOperator<T> multiplyOperator, DivideOperator<T> divideOperator, ModOperator<T> modOperator, Class<T> type) {
         this.addOperator = addOperator;
@@ -25,50 +25,49 @@ public class ArithemeticCalculator<T extends Number> extends Calculator {
         this.divideOperator = divideOperator;
         this.modOperator = modOperator;
         this.type = type;
-        this.db = new ArrayList<>();
+        this.memory = new ArrayList<>();
     }
 
-    public void setValues(T a, T b, char op) {
+    public void setValues(T a, T b, char operator) {
         this.a = a;
         this.b = b;
-        operatorType = OperatorType.of(op);
+        this.operatorType = OperatorType.of(operator);
     }
 
     @Override
     public T calculate() {
         return switch (operatorType) {
-            case PLUS -> addOperator.operate(a, b);
-            case SUBTRACT -> subtractOperator.operate(a, b);
-            case MULTIPLY -> multiplyOperator.operate(a, b);
-            case DIVIDE -> divideOperator.operate(a, b);
-            case MODULAR -> modOperator.operate(a, b);
+            case PLUS -> this.addOperator.operate(a, b);
+            case SUBTRACT -> this.subtractOperator.operate(a, b);
+            case MULTIPLY -> this.multiplyOperator.operate(a, b);
+            case DIVIDE -> this.divideOperator.operate(a, b);
+            case MODULAR -> this.modOperator.operate(a, b);
         };
     }
 
     @Override
     public void saveResult(Number result) {
-        T target = NumberTypeConverter.convertTo(result, type);
-        this.db.add(target);
+        T target = NumberTypeConverter.convertTo(result, this.type);
+        this.memory.add(target);
     }
 
     @Override
-    public void removeFirst(String type) {
-        db.remove(0);
+    public void removeFirst() {
+        this.memory.remove(0);
     }
 
     @Override
     public void printList() {
-        db.forEach(n -> {
+        this.memory.forEach(n -> {
             System.out.print(n + " ");
         });
 
         System.out.println();
     }
 
-
     @Override
     public void printBiggerListThan(Number target) {
-        db.forEach(num -> {
+        this.memory.forEach(num -> {
             if (num.doubleValue() > target.doubleValue()) {
                 System.out.print(num + " ");
             }
