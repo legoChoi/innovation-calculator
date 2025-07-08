@@ -1,12 +1,14 @@
 package calculator;
 
-public abstract class Calculator {
+public abstract class Calculator<T extends Number> {
 
-    public abstract double calculate();
+    public abstract T calculate();
 
-    public abstract void saveResult(double result);
+    public abstract void saveResult(T result);
 
     public abstract void removeFirst(String type);
 
     public abstract void printList();
+
+    public abstract void printBiggerListThan(T target);
 }

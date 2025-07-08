@@ -3,7 +3,7 @@ package calculator;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ArithemeticCalculator extends Calculator {
+public class ArithemeticCalculator<T extends Number> extends Calculator {
 
     private final Operator addOperator;
     private final Operator subtractOperator;
@@ -11,41 +11,44 @@ public class ArithemeticCalculator extends Calculator {
     private final Operator divideOperator;
     private final Operator modOperator;
 
-    private double a;
-    private double b;
+    private T a;
+    private T b;
     private OperatorType operatorType;
 
-    private final List<Double> db;
+    private final Class<T> type;
+    private final List<T> db;
 
-    public ArithemeticCalculator(AddOperator addOperator, SubtractOperator subtractOperator, MultiplyOperator multiplyOperator, DivideOperator divideOperator, ModOperator modOperator) {
+    public ArithemeticCalculator(AddOperator<T> addOperator, SubtractOperator subtractOperator, MultiplyOperator multiplyOperator, DivideOperator divideOperator, ModOperator modOperator, Class<T> type) {
         this.addOperator = addOperator;
         this.subtractOperator = subtractOperator;
         this.multiplyOperator = multiplyOperator;
         this.divideOperator = divideOperator;
         this.modOperator = modOperator;
+        this.type = type;
         this.db = new ArrayList<>();
     }
 
-    public void setValues(double a, double b, char op) {
+    public void setValues(T a, T b, char op) {
         this.a = a;
         this.b = b;
         operatorType = OperatorType.of(op);
     }
 
     @Override
-    public double calculate() {
+    public T calculate() {
         return switch (operatorType) {
-            case PLUS -> addOperator.operate(a, b);
-            case SUBTRACT -> subtractOperator.operate(a, b);
-            case MULTIPLY -> multiplyOperator.operate(a, b);
-            case DIVIDE -> divideOperator.operate(a, b);
-            case MODULAR -> modOperator.operate(a, b);
+            case PLUS -> (T) addOperator.operate(a, b);
+            case SUBTRACT -> (T) subtractOperator.operate(a, b);
+            case MULTIPLY -> (T) multiplyOperator.operate(a, b);
+            case DIVIDE -> (T) divideOperator.operate(a, b);
+            case MODULAR -> (T) modOperator.operate(a, b);
         };
     }
 
     @Override
-    public void saveResult(double result) {
-        db.add(result);
+    public void saveResult(Number result) {
+        T target = NumberTypeConverter.convertTo(result, type);
+        this.db.add(target);
     }
 
     @Override
@@ -55,9 +58,22 @@ public class ArithemeticCalculator extends Calculator {
 
     @Override
     public void printList() {
-        for (double i : db) {
-            System.out.print(i + " ");
-        }
+        db.forEach(n -> {
+            System.out.print(n + " ");
+        });
+
+        System.out.println();
+    }
+
+
+    @Override
+    public void printBiggerListThan(Number target) {
+        db.forEach(num -> {
+            if (num.doubleValue() > target.doubleValue()) {
+                System.out.print(num + " ");
+            }
+        });
+
         System.out.println();
     }
 }

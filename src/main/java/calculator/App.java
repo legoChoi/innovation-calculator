@@ -5,15 +5,15 @@ import java.util.Scanner;
 public class App {
 
     public static void main(String[] args) {
-
-        ArithemeticCalculator arithemeticCalculator = new ArithemeticCalculator(
-                new AddOperator(),
-                new SubtractOperator(),
-                new MultiplyOperator(),
-                new DivideOperator(),
-                new ModOperator()
+        ArithemeticCalculator<Double> arithemeticCalculator = new ArithemeticCalculator<>(
+                new AddOperator<>(Double.class),
+                new SubtractOperator<>(Double.class),
+                new MultiplyOperator<>(Double.class),
+                new DivideOperator<>(Double.class),
+                new ModOperator<>(Double.class),
+                Double.class
         );
-        CircleCalculator circleCalculator = new CircleCalculator();
+        CircleCalculator<Double> circleCalculator = new CircleCalculator<>(Double.class);
 
         Scanner sc = new Scanner(System.in);
         double result;
@@ -24,10 +24,10 @@ public class App {
 
             if (typeCommand.equals("normal")) {
                 System.out.print("첫 번째 숫자를 입력하세요: ");
-                int a = sc.nextInt();
+                double a = sc.nextInt();
 
                 System.out.print("두 번째 숫자를 입력하세요: ");
-                int b = sc.nextInt();
+                double b = sc.nextInt();
 
                 System.out.print("사칙연산 기호를 입력하세요: ");
                 char op = sc.next().charAt(0);
@@ -56,7 +56,7 @@ public class App {
 
             if (typeCommand.equals("circle")) {
                 System.out.print("반지름을 입력하세요: ");
-                int radius = sc.nextInt();
+                double radius = sc.nextInt();
 
                 circleCalculator.setValues(radius);
 

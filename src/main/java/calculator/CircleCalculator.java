@@ -3,29 +3,34 @@ package calculator;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CircleCalculator extends Calculator {
+public class CircleCalculator<T extends Number> extends Calculator {
 
-    private double radius;
+    private T radius;
 
-    private final List<Double> db;
+    private final Class<T> type;
+    private final List<T> db;
 
-    public CircleCalculator() {
+    public CircleCalculator(Class<T> type) {
+        this.type = type;
         this.db = new ArrayList<>();
     }
 
-    public void setValues(double radius) {
+    public void setValues(T radius) {
         this.radius = radius;
     }
 
     @Override
-    public double calculate() {
-        return Math.PI * radius * radius;
+    public T calculate() {
+        double target = Math.PI * radius.doubleValue() * radius.doubleValue();
+        return NumberTypeConverter.convertTo(target, type);
     }
 
     @Override
-    public void saveResult(double result) {
-        db.add(result);
+    public void saveResult(Number result) {
+        T target = NumberTypeConverter.convertTo(result, type);
+        this.db.add(target);
     }
+
 
     @Override
     public void removeFirst(String type) {
@@ -34,9 +39,21 @@ public class CircleCalculator extends Calculator {
 
     @Override
     public void printList() {
-        for (double i : db) {
-            System.out.print(i + " ");
-        }
+        db.forEach(num -> {
+            System.out.print(num + " ");
+        });
+
+        System.out.println();
+    }
+
+    @Override
+    public void printBiggerListThan(Number target) {
+        db.forEach(num -> {
+            if (num.doubleValue() > target.doubleValue()) {
+                System.out.print(num + " ");
+            }
+        });
+
         System.out.println();
     }
 }
