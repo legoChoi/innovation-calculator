@@ -5,11 +5,11 @@ import java.util.List;
 
 public class ArithemeticCalculator<T extends Number> extends Calculator {
 
-    private final Operator addOperator;
-    private final Operator subtractOperator;
-    private final Operator multiplyOperator;
-    private final Operator divideOperator;
-    private final Operator modOperator;
+    private final Operator<T> addOperator;
+    private final Operator<T> subtractOperator;
+    private final Operator<T> multiplyOperator;
+    private final Operator<T> divideOperator;
+    private final Operator<T> modOperator;
 
     private T a;
     private T b;
@@ -18,7 +18,7 @@ public class ArithemeticCalculator<T extends Number> extends Calculator {
     private final Class<T> type;
     private final List<T> db;
 
-    public ArithemeticCalculator(AddOperator<T> addOperator, SubtractOperator subtractOperator, MultiplyOperator multiplyOperator, DivideOperator divideOperator, ModOperator modOperator, Class<T> type) {
+    public ArithemeticCalculator(AddOperator<T> addOperator, SubtractOperator<T> subtractOperator, MultiplyOperator<T> multiplyOperator, DivideOperator<T> divideOperator, ModOperator<T> modOperator, Class<T> type) {
         this.addOperator = addOperator;
         this.subtractOperator = subtractOperator;
         this.multiplyOperator = multiplyOperator;
@@ -37,11 +37,11 @@ public class ArithemeticCalculator<T extends Number> extends Calculator {
     @Override
     public T calculate() {
         return switch (operatorType) {
-            case PLUS -> (T) addOperator.operate(a, b);
-            case SUBTRACT -> (T) subtractOperator.operate(a, b);
-            case MULTIPLY -> (T) multiplyOperator.operate(a, b);
-            case DIVIDE -> (T) divideOperator.operate(a, b);
-            case MODULAR -> (T) modOperator.operate(a, b);
+            case PLUS -> addOperator.operate(a, b);
+            case SUBTRACT -> subtractOperator.operate(a, b);
+            case MULTIPLY -> multiplyOperator.operate(a, b);
+            case DIVIDE -> divideOperator.operate(a, b);
+            case MODULAR -> modOperator.operate(a, b);
         };
     }
 
