@@ -24,10 +24,10 @@ public class App {
 
             if (typeCommand.equals("normal")) {
                 System.out.print("첫 번째 숫자를 입력하세요: ");
-                double a = sc.nextInt();
+                double a = sc.nextDouble();
 
                 System.out.print("두 번째 숫자를 입력하세요: ");
-                double b = sc.nextInt();
+                double b = sc.nextDouble();
 
                 System.out.print("사칙연산 기호를 입력하세요: ");
                 char op = sc.next().charAt(0);
