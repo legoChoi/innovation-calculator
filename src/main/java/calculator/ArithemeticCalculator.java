@@ -58,6 +58,8 @@ public class ArithemeticCalculator<T extends Number> extends Calculator {
 
     @Override
     public void printList() {
+        System.out.print(">> ");
+
         this.memory.forEach(n -> {
             System.out.print(n + " ");
         });
@@ -67,6 +69,8 @@ public class ArithemeticCalculator<T extends Number> extends Calculator {
 
     @Override
     public void printBiggerListThan(Number target) {
+        System.out.print(">> ");
+
         this.memory.forEach(num -> {
             if (num.doubleValue() > target.doubleValue()) {
                 System.out.print(num + " ");

@@ -35,7 +35,7 @@ public class App {
                 arithemeticCalculator.setValues(a, b, op);
 
                 result = arithemeticCalculator.calculate();
-                System.out.println("결과: " + result);
+                System.out.println(">> " + result);
 
                 arithemeticCalculator.saveResult(result);
 
@@ -69,7 +69,7 @@ public class App {
                 circleCalculator.setValues(radius);
 
                 result = circleCalculator.calculate();
-                System.out.println("결과: " + result);
+                System.out.println(">>" + result);
 
                 circleCalculator.saveResult(result);
 

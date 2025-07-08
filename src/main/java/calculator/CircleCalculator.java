@@ -38,6 +38,8 @@ public class CircleCalculator<T extends Number> extends Calculator {
 
     @Override
     public void printList() {
+        System.out.print(">> ");
+
         this.memory.forEach(num -> {
             System.out.print(num + " ");
         });
@@ -47,6 +49,8 @@ public class CircleCalculator<T extends Number> extends Calculator {
 
     @Override
     public void printBiggerListThan(Number target) {
+        System.out.print(">> ");
+
         this.memory.forEach(num -> {
             if (num.doubleValue() > target.doubleValue()) {
                 System.out.print(num + " ");
