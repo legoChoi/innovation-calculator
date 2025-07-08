@@ -52,6 +52,14 @@ public class App {
                 if (sc.nextLine().equals("inquiry")) {
                     arithemeticCalculator.printList();
                 }
+
+                System.out.print("저장된 연산결과 중 보다 큰 값을 조회하시겠습니까? (bigger 입력 시 조회) ");
+
+                if (sc.nextLine().equals("bigger")) {
+                    System.out.print(">> ");
+                    arithemeticCalculator.printBiggerListThan(sc.nextDouble());
+                    sc.nextLine();
+                }
             }
 
             if (typeCommand.equals("circle")) {
@@ -77,6 +85,14 @@ public class App {
 
                 if (sc.nextLine().equals("inquiry")) {
                     circleCalculator.printList();
+                }
+
+                System.out.print("저장된 연산결과 중 보다 큰 값을 조회하시겠습니까? (bigger 입력 시 조회) ");
+
+                if (sc.nextLine().equals("bigger")) {
+                    System.out.print(">> ");
+                    circleCalculator.printBiggerListThan(sc.nextDouble());
+                    sc.nextLine();
                 }
             }
 
