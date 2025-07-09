@@ -1,4 +1,6 @@
-package calculator;
+package circleCalculator.calculator.operator;
+
+import circleCalculator.util.NumberTypeConverter;
 
 public class MultiplyOperator<T extends Number> implements Operator<T> {
 

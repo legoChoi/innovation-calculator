@@ -1,4 +1,7 @@
-package calculator;
+package circleCalculator.util;
+
+import circleCalculator.exception.CalculatorException;
+import circleCalculator.exception.CustomRuntimeException;
 
 public class NumberTypeConverter {
 
@@ -11,6 +14,6 @@ public class NumberTypeConverter {
             return (T) Double.valueOf(target.doubleValue());
         }
 
-        throw new NumberFormatException("지원하지 않는 타입입니다.");
+        throw new CustomRuntimeException(CalculatorException.NOT_SUPPORTED_TYPE);
     }
 }

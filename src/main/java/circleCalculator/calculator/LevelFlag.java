@@ -1,0 +1,14 @@
+package circleCalculator.calculator;
+
+public enum LevelFlag {
+    MENU,
+    CALCULATION,
+    LOG,
+    ARITHEMETIC_CALCULATION,
+    ARITHEMETIC_CALCULATION_RUN,
+    ARITHEMETIC_CALCULATION_POST,
+    CIRCLE_CALCULATION,
+    CIRCLE_CALCULATION_RUN,
+    CIRCLE_CALCULATION_POST,
+    ;
+}

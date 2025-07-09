@@ -1,9 +1,12 @@
-package calculator;
+package circleCalculator.calculator;
+
+import circleCalculator.calculator.operator.*;
+import circleCalculator.util.NumberTypeConverter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ArithemeticCalculator<T extends Number> extends Calculator {
+public class ArithmeticCalculator<T extends Number> extends Calculator<T> {
 
     private final Operator<T> addOperator;
     private final Operator<T> subtractOperator;
@@ -18,7 +21,7 @@ public class ArithemeticCalculator<T extends Number> extends Calculator {
     private final Class<T> type;
     private final List<T> memory;
 
-    public ArithemeticCalculator(AddOperator<T> addOperator, SubtractOperator<T> subtractOperator, MultiplyOperator<T> multiplyOperator, DivideOperator<T> divideOperator, ModOperator<T> modOperator, Class<T> type) {
+    public ArithmeticCalculator(AddOperator<T> addOperator, SubtractOperator<T> subtractOperator, MultiplyOperator<T> multiplyOperator, DivideOperator<T> divideOperator, ModOperator<T> modOperator, Class<T> type) {
         this.addOperator = addOperator;
         this.subtractOperator = subtractOperator;
         this.multiplyOperator = multiplyOperator;

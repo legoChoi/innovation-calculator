@@ -1,4 +1,4 @@
-package calculator;
+package circleCalculator.calculator.operator;
 
 public interface Operator<T extends Number> {
 

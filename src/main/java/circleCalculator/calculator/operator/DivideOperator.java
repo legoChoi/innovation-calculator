@@ -1,4 +1,8 @@
-package calculator;
+package circleCalculator.calculator.operator;
+
+import circleCalculator.util.NumberTypeConverter;
+import circleCalculator.exception.CalculatorException;
+import circleCalculator.exception.CustomRuntimeException;
 
 public class DivideOperator<T extends Number> implements Operator<T> {
 
@@ -11,7 +15,7 @@ public class DivideOperator<T extends Number> implements Operator<T> {
     @Override
     public T operate(T a, T b) {
         if (b.doubleValue() == 0) {
-            throw new ArithmeticException("0으로 나눌 수 없습니다.");
+            throw new CustomRuntimeException(CalculatorException.DIVIDE_BY_ZERO);
         }
 
         double result = a.doubleValue() / b.doubleValue();

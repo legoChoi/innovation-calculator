@@ -1,4 +1,7 @@
-package calculator;
+package circleCalculator.calculator.operator;
+
+import circleCalculator.exception.CalculatorException;
+import circleCalculator.exception.CustomRuntimeException;
 
 import java.util.Arrays;
 
@@ -20,7 +23,7 @@ public enum OperatorType {
         return Arrays.stream(OperatorType.values())
                 .filter(operatorType -> operatorType.getSymbol() == operator)
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("유효하지 않은 연산자입니다."));
+                .orElseThrow(() -> new CustomRuntimeException(CalculatorException.NOT_SUPPORTED_OPERATOR));
     }
 
     private char getSymbol() {

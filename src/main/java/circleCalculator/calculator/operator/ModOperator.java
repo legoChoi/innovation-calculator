@@ -1,4 +1,6 @@
-package calculator;
+package circleCalculator.calculator.operator;
+
+import circleCalculator.util.NumberTypeConverter;
 
 public class ModOperator<T extends Number> implements Operator<T> {
 
@@ -11,7 +13,7 @@ public class ModOperator<T extends Number> implements Operator<T> {
     @Override
     public T operate(T a, T b) {
         double result = a.doubleValue() % b.doubleValue();
-        
+
         return NumberTypeConverter.convertTo(result, this.type);
     }
 }

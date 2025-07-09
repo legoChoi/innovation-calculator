@@ -1,4 +1,4 @@
-package calculator;
+package circleCalculator.calculator;
 
 public abstract class Calculator<T extends Number> {
 

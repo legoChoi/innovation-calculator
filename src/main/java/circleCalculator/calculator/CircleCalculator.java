@@ -1,9 +1,11 @@
-package calculator;
+package circleCalculator.calculator;
+
+import circleCalculator.util.NumberTypeConverter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CircleCalculator<T extends Number> extends Calculator {
+public class CircleCalculator<T extends Number> extends Calculator<T> {
 
     private T radius;
 
