@@ -1,6 +1,6 @@
 package circleCalculator.command;
 
-import circleCalculator.calculator.LevelFlag;
+import circleCalculator.LevelFlag;
 import circleCalculator.exception.CalculatorException;
 import circleCalculator.exception.CustomRuntimeException;
 

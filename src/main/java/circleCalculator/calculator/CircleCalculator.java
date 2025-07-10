@@ -42,9 +42,7 @@ public class CircleCalculator<T extends Number> extends Calculator<T> {
     public void printList() {
         System.out.print(">> ");
 
-        this.memory.forEach(num -> {
-            System.out.print(num + " ");
-        });
+        this.memory.forEach(num -> System.out.print(num + " "));
 
         System.out.println();
     }
@@ -53,11 +51,9 @@ public class CircleCalculator<T extends Number> extends Calculator<T> {
     public void printBiggerListThan(Number target) {
         System.out.print(">> ");
 
-        this.memory.forEach(num -> {
-            if (num.doubleValue() > target.doubleValue()) {
-                System.out.print(num + " ");
-            }
-        });
+        this.memory.stream()
+                .filter(num -> num.doubleValue() > target.doubleValue())
+                .forEach(num -> System.out.print(num + " "));
 
         System.out.println();
     }

@@ -36,10 +36,6 @@ public class AppConfig {
     );
     private final CircleCalculator<Double> circleCalculator = new CircleCalculator<>(Double.class);
 
-    public void exit() {
-        scanner.close();
-    }
-
     private final Controller mainMenuController = new MainMenuController(input);
     private final Controller calculatorMenuController = new CalculatorMenuController(input);
     private final Controller logMenuController = new LogMenuController(input, exceptionLogService);
@@ -65,5 +61,9 @@ public class AppConfig {
 
     public MainDispatcher mainDispatcher() {
         return mainDispatcher;
+    }
+
+    public void exit() {
+        scanner.close();
     }
 }

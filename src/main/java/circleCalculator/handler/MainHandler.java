@@ -1,6 +1,6 @@
 package circleCalculator.handler;
 
-import circleCalculator.calculator.LevelFlag;
+import circleCalculator.LevelFlag;
 import circleCalculator.controller.Controller;
 
 import java.util.HashMap;

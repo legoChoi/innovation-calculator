@@ -1,7 +1,7 @@
 package circleCalculator.controller;
 
 import circleCalculator.calculator.ArithmeticCalculator;
-import circleCalculator.calculator.LevelFlag;
+import circleCalculator.LevelFlag;
 import circleCalculator.command.PostProcessCommand;
 import circleCalculator.util.Input;
 

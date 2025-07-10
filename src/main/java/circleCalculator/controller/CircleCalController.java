@@ -1,7 +1,7 @@
 package circleCalculator.controller;
 
 import circleCalculator.calculator.CircleCalculator;
-import circleCalculator.calculator.LevelFlag;
+import circleCalculator.LevelFlag;
 import circleCalculator.util.Input;
 
 public class CircleCalController implements Controller {

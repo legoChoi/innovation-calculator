@@ -1,6 +1,6 @@
 package circleCalculator.controller;
 
-import circleCalculator.calculator.LevelFlag;
+import circleCalculator.LevelFlag;
 import circleCalculator.command.LogCommand;
 import circleCalculator.exception.ExceptionLogService;
 import circleCalculator.util.Input;

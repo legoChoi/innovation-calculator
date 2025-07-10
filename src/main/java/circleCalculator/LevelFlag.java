@@ -1,4 +1,4 @@
-package circleCalculator.calculator;
+package circleCalculator;
 
 public enum LevelFlag {
     MAIN_MENU("[MAIN_MENU]"),
@@ -8,7 +8,7 @@ public enum LevelFlag {
     ARITHEMETIC_CALCULATOR_POST_PROCESS("[ARITHEMETIC_CALCULATOR_POST_PROCESS]"),
     CIRCLE_CALCULATOR_PROCESS("[CIRCLE_CALCULATOR_PROCESS]"),
     CIRCLE_CALCULATOR_POST_PROCESS("[CIRCLE_CALCULATOR_POST_PROCESS]"),
-    EXIT(""),
+    EXIT("[EXIT]"),
     ;
 
     private final String title;
