@@ -1,10 +1,11 @@
 package circleCalculator.config;
 
+import circleCalculator.AppRunner;
 import circleCalculator.calculator.ArithmeticCalculator;
 import circleCalculator.calculator.CircleCalculator;
 import circleCalculator.calculator.operator.*;
 import circleCalculator.controller.*;
-import circleCalculator.dispatcher.MainDispatcher;
+import circleCalculator.dispatcher.Dispatcher;
 import circleCalculator.exception.ExceptionLogRepository;
 import circleCalculator.exception.ExceptionLogService;
 import circleCalculator.handler.ControllerHandler;
@@ -54,13 +55,15 @@ public class AppConfig {
             circleCalculatorPostProcessController
     );
 
-    private final MainDispatcher mainDispatcher = new MainDispatcher(
+    private final Dispatcher dispatcher = new Dispatcher(
             exceptionLogService,
             controllerHandler
     );
 
-    public MainDispatcher mainDispatcher() {
-        return mainDispatcher;
+    private final AppRunner appRunner = new AppRunner(dispatcher);
+
+    public AppRunner AppRunner() {
+        return appRunner;
     }
 
     public void exit() {

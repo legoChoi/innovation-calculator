@@ -6,8 +6,8 @@ public class App {
 
     public static void main(String[] args) {
         AppConfig appConfig = new AppConfig();
-        appConfig.mainDispatcher().dispatch();
-
+        AppRunner appRunner = appConfig.AppRunner();
+        appRunner.run();
         appConfig.exit();
     }
 }
