@@ -29,7 +29,7 @@ public class MainDispatcher implements Dispatcher {
 
                 levelFlag = controller.run();
             } catch (CustomRuntimeException e) {
-                exceptionLogService.saveLog(e.getMessage());
+                exceptionLogService.saveLog(levelFlag.getTitle(), e.getMessage());
             }
         }
     }

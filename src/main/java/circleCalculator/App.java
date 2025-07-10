@@ -1,7 +1,6 @@
 package circleCalculator;
 
 import circleCalculator.config.AppConfig;
-import circleCalculator.dispatcher.MenuDispatcher;
 
 public class App {
 

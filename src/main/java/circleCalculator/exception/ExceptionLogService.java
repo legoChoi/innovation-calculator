@@ -11,10 +11,11 @@ public class ExceptionLogService {
         this.exceptionLogRepository = exceptionLogRepository;
     }
 
-    public void saveLog(String message) {
-        exceptionLogRepository.save(new ExceptionLog(LocalDateTime.now(), message));
+    public void saveLog(String level, String message) {
+        ExceptionLog log = new ExceptionLog(LocalDateTime.now(), level, message);
+        exceptionLogRepository.save(log);
         System.out.println();
-        System.out.println("[ERROR] " + message);
+        System.out.println("[ERROR] " + log.toString());
     }
 
     public void printLogList() {
@@ -22,7 +23,7 @@ public class ExceptionLogService {
         System.out.println();
 
         if (!memory.isEmpty()) {
-            memory.forEach(log -> System.out.println("[" + log.time() + "] " + log.message()));
+            memory.forEach(log -> System.out.println(log.toString()));
             return;
         }
 
