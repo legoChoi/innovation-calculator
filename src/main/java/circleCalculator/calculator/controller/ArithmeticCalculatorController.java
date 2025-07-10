@@ -1,6 +1,8 @@
 package circleCalculator.calculator.controller;
 
 import circleCalculator.calculator.ArithmeticCalculator;
+import circleCalculator.calculator.CalculatorPostProcessor;
+import circleCalculator.command.PostProcessCommand;
 import circleCalculator.exception.CalculatorException;
 import circleCalculator.exception.CustomRuntimeException;
 import circleCalculator.util.Input;
@@ -13,11 +15,18 @@ public class ArithmeticCalculatorController implements CalculatorController {
     private final Input input;
     private final ExceptionLogService exceptionLogService;
     private final ArithmeticCalculator<Double> arithmeticCalculator;
+    private final CalculatorPostProcessor calculatorPostProcessor;
 
-    public ArithmeticCalculatorController(Input input, ExceptionLogService exceptionLogService, ArithmeticCalculator<Double> arithmeticCalculator) {
+    public ArithmeticCalculatorController(
+            Input input,
+            ExceptionLogService exceptionLogService,
+            ArithmeticCalculator<Double> arithmeticCalculator,
+            CalculatorPostProcessor calculatorPostProcessor
+    ) {
         this.input = input;
         this.exceptionLogService = exceptionLogService;
         this.arithmeticCalculator = arithmeticCalculator;
+        this.calculatorPostProcessor = calculatorPostProcessor;
     }
 
     @Override
@@ -26,6 +35,7 @@ public class ArithmeticCalculatorController implements CalculatorController {
 
         while (true) {
             try {
+                System.out.println();
                 System.out.print("첫 번째 숫자를 입력하세요: ");
                 double a = input.readDouble();
 
@@ -55,40 +65,9 @@ public class ArithmeticCalculatorController implements CalculatorController {
         }
 
         while (true) {
-            try {
-                if (postProcess()) {
-                    return;
-                }
-            } catch (CustomRuntimeException e) {
-                exceptionLogService.saveLog(e.getMessage());
+            if (calculatorPostProcessor.run(arithmeticCalculator)) {
+                return;
             }
         }
-    }
-
-    private boolean postProcess() {
-        System.out.println();
-        System.out.print("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제) ");
-
-        if (input.readLine().equalsIgnoreCase("remove")) {
-            arithmeticCalculator.removeFirst();
-        }
-
-        System.out.print("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회) ");
-
-        if (input.readLine().equalsIgnoreCase("inquiry")) {
-            arithmeticCalculator.printList();
-        }
-
-        System.out.print("저장된 연산결과 중 보다 큰 값을 조회하시겠습니까? (bigger 입력 시 조회) ");
-
-        if (input.readLine().equalsIgnoreCase("bigger")) {
-            System.out.print(">> ");
-            arithmeticCalculator.printBiggerListThan(input.readDouble());
-            input.readLine();
-        }
-
-        System.out.print("더 계산하시겠습니까? (exit 입력 시 종료) ");
-
-        return input.readLine().equals("exit");
     }
 }

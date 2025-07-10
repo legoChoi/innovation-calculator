@@ -1,12 +1,12 @@
 package circleCalculator.dispatcher;
 
-import circleCalculator.menu.Menu;
-import circleCalculator.util.Input;
+import circleCalculator.command.MenuCommand;
 import circleCalculator.exception.CustomRuntimeException;
 import circleCalculator.exception.ExceptionLogService;
 import circleCalculator.handler.Handler;
 import circleCalculator.handler.MenuHandler;
-import circleCalculator.command.MenuCommand;
+import circleCalculator.menu.Menu;
+import circleCalculator.util.Input;
 
 public class MenuDispatcher implements Dispatcher {
 

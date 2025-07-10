@@ -5,10 +5,12 @@ import circleCalculator.exception.CustomRuntimeException;
 
 import java.util.Arrays;
 
-public enum CalculationCommand {
+public enum CalculationCommand implements Command {
+
     NORMAL("normal", "1"),
     CIRCLE("circle", "2"),
-    BACK("back", "3");
+    BACK("back", "3"),
+    ;
 
     private final String command;
     private final String index;

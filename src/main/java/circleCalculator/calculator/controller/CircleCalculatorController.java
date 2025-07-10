@@ -1,23 +1,29 @@
 package circleCalculator.calculator.controller;
 
+import circleCalculator.calculator.CalculatorPostProcessor;
 import circleCalculator.calculator.CircleCalculator;
-import circleCalculator.exception.CalculatorException;
+import circleCalculator.command.PostProcessCommand;
 import circleCalculator.exception.CustomRuntimeException;
 import circleCalculator.exception.ExceptionLogService;
 import circleCalculator.util.Input;
-
-import java.util.InputMismatchException;
 
 public class CircleCalculatorController implements CalculatorController {
 
     private final Input input;
     private final ExceptionLogService exceptionLogService;
     private final CircleCalculator<Double> circleCalculator;
+    private final CalculatorPostProcessor calculatorPostProcessor;
 
-    public CircleCalculatorController(Input input, ExceptionLogService exceptionLogService, CircleCalculator<Double> circleCalculator) {
+    public CircleCalculatorController(
+            Input input,
+            ExceptionLogService exceptionLogService,
+            CircleCalculator<Double> circleCalculator,
+            CalculatorPostProcessor calculatorPostProcessor
+    ) {
         this.input = input;
         this.exceptionLogService = exceptionLogService;
         this.circleCalculator = circleCalculator;
+        this.calculatorPostProcessor = calculatorPostProcessor;
     }
 
     @Override
@@ -26,6 +32,7 @@ public class CircleCalculatorController implements CalculatorController {
 
         while (true) {
             try {
+                System.out.println();
                 System.out.print("반지름을 입력하세요: ");
                 double radius = input.readDouble();
 
@@ -39,9 +46,8 @@ public class CircleCalculatorController implements CalculatorController {
                 input.readLine();
 
                 break;
-            } catch (CustomRuntimeException | InputMismatchException e) {
-                input.readLine();
-                throw new CustomRuntimeException(CalculatorException.INVALID_INPUT);
+            } catch (CustomRuntimeException e) {
+                exceptionLogService.saveLog(e.getMessage());
             }
         }
 
@@ -50,41 +56,9 @@ public class CircleCalculatorController implements CalculatorController {
         }
 
         while (true) {
-            try {
-                if (postProcess()) {
-                    return;
-                }
-            } catch (CustomRuntimeException e) {
-                exceptionLogService.saveLog(e.getMessage());
+            if (calculatorPostProcessor.run(circleCalculator)) {
+                return;
             }
         }
-    }
-
-
-    private boolean postProcess() {
-        System.out.println();
-        System.out.print("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제) ");
-
-        if (input.readLine().equalsIgnoreCase("remove")) {
-            circleCalculator.removeFirst();
-        }
-
-        System.out.print("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회) ");
-
-        if (input.readLine().equalsIgnoreCase("inquiry")) {
-            circleCalculator.printList();
-        }
-
-        System.out.print("저장된 연산결과 중 보다 큰 값을 조회하시겠습니까? (bigger 입력 시 조회) ");
-
-        if (input.readLine().equalsIgnoreCase("bigger")) {
-            System.out.print(">> ");
-            circleCalculator.printBiggerListThan(input.readDouble());
-            input.readLine();
-        }
-
-        System.out.print("더 계산하시겠습니까? (exit 입력 시 종료) ");
-
-        return input.readLine().equals("exit");
     }
 }

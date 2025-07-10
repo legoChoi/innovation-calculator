@@ -1,5 +1,6 @@
 package circleCalculator.config;
 
+import circleCalculator.calculator.CalculatorPostProcessor;
 import circleCalculator.calculator.controller.ArithmeticCalculatorController;
 import circleCalculator.calculator.ArithmeticCalculator;
 import circleCalculator.calculator.controller.CircleCalculatorController;
@@ -9,7 +10,7 @@ import circleCalculator.dispatcher.CalculatorControllerDispatcher;
 import circleCalculator.dispatcher.MenuDispatcher;
 import circleCalculator.exception.ExceptionLogRepository;
 import circleCalculator.exception.ExceptionLogService;
-import circleCalculator.menu.ExceptionLogMenu;
+import circleCalculator.menu.LogMenu;
 import circleCalculator.handler.CalculatorHandler;
 import circleCalculator.handler.MenuHandler;
 import circleCalculator.menu.CalculatorMenu;
@@ -21,16 +22,14 @@ public class AppConfig {
 
     private final Scanner scanner = new Scanner(System.in);
     private final Input input = new Input(scanner);
-
     private final ExceptionLogRepository exceptionLogRepository = new ExceptionLogRepository();
     private final ExceptionLogService exceptionLogService = new ExceptionLogService(
             exceptionLogRepository
     );
-    private final ExceptionLogMenu exceptionLogController = new ExceptionLogMenu(
+    private final LogMenu exceptionLogController = new LogMenu(
             input,
             exceptionLogService
     );
-
     private final AddOperator<Double> addOperator = new AddOperator<>(Double.class);
     private final SubtractOperator<Double> subtractOperator = new SubtractOperator<>(Double.class);
     private final MultiplyOperator<Double> multiplyOperator = new MultiplyOperator<>(Double.class);
@@ -46,15 +45,21 @@ public class AppConfig {
     );
     private final CircleCalculator<Double> circleCalculator = new CircleCalculator<>(Double.class);
 
+    private final CalculatorPostProcessor calculatorPostProcessor = new CalculatorPostProcessor(
+            input,
+            exceptionLogService
+    );
     private final ArithmeticCalculatorController arithmeticCalculationController = new ArithmeticCalculatorController(
             input,
             exceptionLogService,
-            arithmeticCalculator
+            arithmeticCalculator,
+            calculatorPostProcessor
     );
     private final CircleCalculatorController circleCalculationController = new CircleCalculatorController(
             input,
             exceptionLogService,
-            circleCalculator
+            circleCalculator,
+            calculatorPostProcessor
     );
     private final CalculatorHandler calculatorHandler = new CalculatorHandler(
             circleCalculationController,
@@ -65,7 +70,6 @@ public class AppConfig {
             calculatorHandler,
             input
     );
-
     private final CalculatorMenu calculatorController = new CalculatorMenu(
             calculatorControllerDispatcher
     );
@@ -75,11 +79,9 @@ public class AppConfig {
             exceptionLogService,
             menuHandler
     );
-
     public MenuDispatcher controllerDispatcher() {
         return menuDispatcher;
     }
-
     public void exit() {
         scanner.close();
     }

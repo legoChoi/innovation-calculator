@@ -4,12 +4,12 @@ import circleCalculator.exception.ExceptionLogService;
 import circleCalculator.util.Input;
 import circleCalculator.command.LogCommand;
 
-public class ExceptionLogMenu implements Menu {
+public class LogMenu implements Menu {
 
     private final Input input;
     private final ExceptionLogService exceptionLogService;
 
-    public ExceptionLogMenu(Input input, ExceptionLogService exceptionLogService) {
+    public LogMenu(Input input, ExceptionLogService exceptionLogService) {
         this.input = input;
         this.exceptionLogService = exceptionLogService;
     }

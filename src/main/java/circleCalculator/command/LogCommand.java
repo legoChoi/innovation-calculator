@@ -5,9 +5,11 @@ import circleCalculator.exception.CustomRuntimeException;
 
 import java.util.Arrays;
 
-public enum LogCommand {
+public enum LogCommand implements Command {
+
     PRINT("print", "1"),
-    CLEAR("clear", "2");
+    CLEAR("clear", "2"),
+    ;
 
     private final String command;
     private final String index;
