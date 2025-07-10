@@ -7,7 +7,7 @@ import circleCalculator.controller.*;
 import circleCalculator.dispatcher.MainDispatcher;
 import circleCalculator.exception.ExceptionLogRepository;
 import circleCalculator.exception.ExceptionLogService;
-import circleCalculator.handler.MainHandler;
+import circleCalculator.handler.ControllerHandler;
 import circleCalculator.util.Input;
 
 import java.util.Scanner;
@@ -44,7 +44,7 @@ public class AppConfig {
     private final Controller circleCalculatorPostProcessController = new CircleCalculatorPostProcessController(input, circleCalculator);
     private final Controller circleCalController = new CircleCalculatorController(input, circleCalculator);
 
-    private final MainHandler mainHandler = new MainHandler(
+    private final ControllerHandler controllerHandler = new ControllerHandler(
             mainMenuController,
             calculatorMenuController,
             logMenuController,
@@ -56,7 +56,7 @@ public class AppConfig {
 
     private final MainDispatcher mainDispatcher = new MainDispatcher(
             exceptionLogService,
-            mainHandler
+            controllerHandler
     );
 
     public MainDispatcher mainDispatcher() {

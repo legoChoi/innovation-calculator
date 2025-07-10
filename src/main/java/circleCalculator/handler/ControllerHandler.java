@@ -6,7 +6,7 @@ import circleCalculator.controller.Controller;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MainHandler implements Handler {
+public class ControllerHandler implements Handler {
 
     private final Controller mainMenuController;
     private final Controller calculatorMenuController;
@@ -18,7 +18,7 @@ public class MainHandler implements Handler {
 
     private final Map<LevelFlag, Controller> controllerMap = new HashMap<>();
 
-    public MainHandler(Controller mainMenuController, Controller calculatorMenuController, Controller logMenuController, Controller arithmeticCalculatorController, Controller arithmeticCalculatorPostProcessController, Controller circleCalculatorController, Controller circleCalculatorPostProcessController) {
+    public ControllerHandler(Controller mainMenuController, Controller calculatorMenuController, Controller logMenuController, Controller arithmeticCalculatorController, Controller arithmeticCalculatorPostProcessController, Controller circleCalculatorController, Controller circleCalculatorPostProcessController) {
         this.mainMenuController = mainMenuController;
         this.calculatorMenuController = calculatorMenuController;
         this.logMenuController = logMenuController;
