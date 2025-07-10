@@ -4,12 +4,12 @@ import circleCalculator.calculator.CircleCalculator;
 import circleCalculator.LevelFlag;
 import circleCalculator.util.Input;
 
-public class CircleCalController implements Controller {
+public class CircleCalculatorController implements Controller {
 
     private final Input input;
     private final CircleCalculator<Double> circleCalculator;
 
-    public CircleCalController(Input input, CircleCalculator<Double> circleCalculator) {
+    public CircleCalculatorController(Input input, CircleCalculator<Double> circleCalculator) {
         this.input = input;
         this.circleCalculator = circleCalculator;
     }

@@ -1,7 +1,7 @@
 package circleCalculator.controller;
 
 import circleCalculator.LevelFlag;
-import circleCalculator.command.LogCommand;
+import circleCalculator.command.LogMenuCommand;
 import circleCalculator.exception.ExceptionLogService;
 import circleCalculator.util.Input;
 
@@ -17,8 +17,8 @@ public class LogMenuController implements Controller {
 
     @Override
     public LevelFlag run() {
-        LogCommand.print();
-        LogCommand command = LogCommand.findByIndexOrCommand(input.readLine());
+        LogMenuCommand.print();
+        LogMenuCommand command = LogMenuCommand.findByIndexOrCommand(input.readLine());
 
         switch (command) {
             case PRINT -> exceptionLogService.printLogList();

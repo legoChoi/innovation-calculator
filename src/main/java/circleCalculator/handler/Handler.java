@@ -5,5 +5,10 @@ import circleCalculator.controller.Controller;
 
 public interface Handler {
 
+    /**
+     * levelFlag를 입력받아 해당하는 Controller 반환
+     * @param levelFlag
+     * @return
+     */
     Controller get(LevelFlag levelFlag);
 }

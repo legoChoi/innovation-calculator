@@ -2,7 +2,7 @@ package circleCalculator.controller;
 
 import circleCalculator.LevelFlag;
 import circleCalculator.calculator.Calculator;
-import circleCalculator.command.PostProcessCommand;
+import circleCalculator.command.PostProcessMenuCommand;
 import circleCalculator.util.Input;
 
 public abstract class AbstractCalculatorPostProcessController implements Controller {
@@ -19,10 +19,10 @@ public abstract class AbstractCalculatorPostProcessController implements Control
 
     @Override
     public LevelFlag run() {
-        PostProcessCommand.print();
-        PostProcessCommand postProcessCommand = PostProcessCommand.findByIndexOrCommand(input.readLine());
+        PostProcessMenuCommand.print();
+        PostProcessMenuCommand command = PostProcessMenuCommand.findByIndexOrCommand(input.readLine());
 
-        switch (postProcessCommand) {
+        switch (command) {
             case REMOVE -> calculator.removeFirst();
             case INQUIRY -> calculator.printList();
             case BIGGER -> {

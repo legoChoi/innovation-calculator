@@ -11,12 +11,11 @@ public class MainDispatcher implements Dispatcher {
     private final ExceptionLogService exceptionLogService;
     private final Handler mainHandler;
 
-    private LevelFlag levelFlag;
+    private LevelFlag levelFlag = LevelFlag.MAIN_MENU;
 
     public MainDispatcher(ExceptionLogService exceptionLogService, Handler mainHandler) {
         this.exceptionLogService = exceptionLogService;
         this.mainHandler = mainHandler;
-        levelFlag = LevelFlag.MAIN_MENU;
     }
 
     @Override

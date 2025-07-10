@@ -39,10 +39,10 @@ public class AppConfig {
     private final Controller mainMenuController = new MainMenuController(input);
     private final Controller calculatorMenuController = new CalculatorMenuController(input);
     private final Controller logMenuController = new LogMenuController(input, exceptionLogService);
-    private final Controller arithmeticCalController = new ArithmeticCalController(input, arithmeticCalculator);
+    private final Controller arithmeticCalController = new ArithmeticCalculatorController(input, arithmeticCalculator);
     private final Controller arithmeticCalculatorPostProcessController = new ArithmeticCalculatorPostProcessController(input, arithmeticCalculator);
     private final Controller circleCalculatorPostProcessController = new CircleCalculatorPostProcessController(input, circleCalculator);
-    private final Controller circleCalController = new CircleCalController(input, circleCalculator);
+    private final Controller circleCalController = new CircleCalculatorController(input, circleCalculator);
 
     private final MainHandler mainHandler = new MainHandler(
             mainMenuController,

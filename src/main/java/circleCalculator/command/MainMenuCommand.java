@@ -6,7 +6,7 @@ import circleCalculator.exception.CustomRuntimeException;
 
 import java.util.Arrays;
 
-public enum MenuCommand implements Command {
+public enum MainMenuCommand {
 
     CALCULATION("calculation", "1", LevelFlag.CALCULATOR_MENU),
     LOG("log", "2", LevelFlag.LOG_MENU),
@@ -17,7 +17,7 @@ public enum MenuCommand implements Command {
     private final String index;
     private final LevelFlag levelFlag;
 
-    MenuCommand(String command, String index, LevelFlag levelFlag) {
+    MainMenuCommand(String command, String index, LevelFlag levelFlag) {
         this.command = command;
         this.index = index;
         this.levelFlag = levelFlag;
@@ -35,7 +35,7 @@ public enum MenuCommand implements Command {
         System.out.print("어떤 작업을 실행하시겠습니까? (번호나 명령어 입력) >> ");
     }
 
-    public static MenuCommand findByIndexOrCommand(String commandInput) {
+    public static MainMenuCommand findByIndexOrCommand(String commandInput) {
         return Arrays.stream(values())
                 .filter(e -> e.command.equalsIgnoreCase(commandInput) || e.index.equals(commandInput))
                 .findAny()
