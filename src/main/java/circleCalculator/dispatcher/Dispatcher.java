@@ -28,7 +28,7 @@ public class Dispatcher {
 
                 if (controller == null) break; // LevelFlag.EXIT
 
-                levelFlag = controller.run();
+                levelFlag = controller.run(); // 작업 실행
             } catch (CustomRuntimeException e) {
                 exceptionLogService.saveLog(levelFlag.getTitle(), e.getMessage());
             }

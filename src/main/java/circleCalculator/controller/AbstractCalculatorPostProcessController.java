@@ -15,6 +15,10 @@ public abstract class AbstractCalculatorPostProcessController implements Control
         this.calculator = calculator;
     }
 
+    /**
+     * 루프 중 예외가 발생 할 경우 현재 작업 다시 시작하기 위한 메소드
+     * @return 현재 작업 위치에 해당하는 LevelFlag 값 반환
+     */
     protected abstract LevelFlag getCurrentPostProcessLevelFlag();
 
     @Override

@@ -1,5 +1,8 @@
 package circleCalculator;
 
+/**
+ * 현재 위치
+ */
 public enum LevelFlag {
     MAIN_MENU("[MAIN_MENU]"),
     CALCULATOR_MENU("[CALCULATOR_MENU]"),
