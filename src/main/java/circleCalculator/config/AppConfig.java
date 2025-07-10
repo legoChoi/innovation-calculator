@@ -8,7 +8,10 @@ import circleCalculator.controller.*;
 import circleCalculator.dispatcher.Dispatcher;
 import circleCalculator.exception.ExceptionLogRepository;
 import circleCalculator.exception.ExceptionLogService;
-import circleCalculator.handler.ControllerHandler;
+import circleCalculator.handler.ControllerHandlerAdapter;
+import circleCalculator.handler.ControllerHandlerMapping;
+import circleCalculator.handler.HandlerAdapter;
+import circleCalculator.handler.HandlerMapping;
 import circleCalculator.util.Input;
 
 import java.util.Scanner;
@@ -45,7 +48,7 @@ public class AppConfig {
     private final Controller circleCalculatorPostProcessController = new CircleCalculatorPostProcessController(input, circleCalculator);
     private final Controller circleCalController = new CircleCalculatorController(input, circleCalculator);
 
-    private final ControllerHandler controllerHandler = new ControllerHandler(
+    private final HandlerMapping handlerMapping = new ControllerHandlerMapping(
             mainMenuController,
             calculatorMenuController,
             logMenuController,
@@ -55,9 +58,12 @@ public class AppConfig {
             circleCalculatorPostProcessController
     );
 
+    private final HandlerAdapter handlerAdapter = new ControllerHandlerAdapter() {};
+
     private final Dispatcher dispatcher = new Dispatcher(
             exceptionLogService,
-            controllerHandler
+            handlerMapping,
+            handlerAdapter
     );
 
     private final AppRunner appRunner = new AppRunner(dispatcher);

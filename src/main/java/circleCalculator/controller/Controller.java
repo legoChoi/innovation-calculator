@@ -1,8 +1,9 @@
 package circleCalculator.controller;
 
 import circleCalculator.LevelFlag;
+import circleCalculator.handler.Handler;
 
-public interface Controller {
+public interface Controller extends Handler {
 
     /**
      * 각 단계별 해당하는 작업 진행

@@ -19,4 +19,9 @@ public class CalculatorMenuController implements Controller {
 
         return command.getLevelFlag();
     }
+
+    @Override
+    public LevelFlag handle() {
+        return run();
+    }
 }

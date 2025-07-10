@@ -32,4 +32,9 @@ public class CircleCalculatorController implements Controller {
 
         return LevelFlag.CIRCLE_CALCULATOR_POST_PROCESS;
     }
+
+    @Override
+    public LevelFlag handle() {
+        return run();
+    }
 }

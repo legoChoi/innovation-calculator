@@ -37,4 +37,9 @@ public class ArithmeticCalculatorController implements Controller {
 
         return LevelFlag.ARITHEMETIC_CALCULATOR_POST_PROCESS;
     }
+
+    @Override
+    public LevelFlag handle() {
+        return run();
+    }
 }

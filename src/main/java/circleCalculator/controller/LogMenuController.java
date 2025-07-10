@@ -27,4 +27,9 @@ public class LogMenuController implements Controller {
 
         return command.getLevelFlag();
     }
+
+    @Override
+    public LevelFlag handle() {
+        return run();
+    }
 }

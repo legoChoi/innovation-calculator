@@ -4,18 +4,21 @@ import circleCalculator.LevelFlag;
 import circleCalculator.controller.Controller;
 import circleCalculator.exception.CustomRuntimeException;
 import circleCalculator.exception.ExceptionLogService;
-import circleCalculator.handler.Handler;
+import circleCalculator.handler.HandlerAdapter;
+import circleCalculator.handler.HandlerMapping;
 
 public class Dispatcher {
 
     private final ExceptionLogService exceptionLogService;
-    private final Handler mainHandler;
+    private final HandlerMapping handlerMapping;
+    private final HandlerAdapter handlerAdapter;
 
     private LevelFlag levelFlag = LevelFlag.MAIN_MENU;
 
-    public Dispatcher(ExceptionLogService exceptionLogService, Handler mainHandler) {
+    public Dispatcher(ExceptionLogService exceptionLogService, HandlerMapping handlerMapping, HandlerAdapter handlerAdapter) {
         this.exceptionLogService = exceptionLogService;
-        this.mainHandler = mainHandler;
+        this.handlerMapping = handlerMapping;
+        this.handlerAdapter = handlerAdapter;
     }
 
     /**
@@ -24,11 +27,11 @@ public class Dispatcher {
     public void dispatch() {
         while (true) {
             try {
-                Controller controller = mainHandler.get(levelFlag); // handler로 부터 LevelFlag에 해당하는 controller 반환
+                Controller controller = handlerMapping.getHandler(levelFlag); // handler로 부터 LevelFlag에 해당하는 controller 반환
 
                 if (controller == null) break; // LevelFlag.EXIT
 
-                levelFlag = controller.run(); // 작업 실행
+                levelFlag = handlerAdapter.handle(controller); // 작업 실행
             } catch (CustomRuntimeException e) {
                 exceptionLogService.saveLog(levelFlag.getTitle(), e.getMessage());
             }

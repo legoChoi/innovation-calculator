@@ -1,14 +1,13 @@
 package circleCalculator.handler;
 
 import circleCalculator.LevelFlag;
-import circleCalculator.controller.Controller;
 
 public interface Handler {
 
     /**
-     * levelFlag를 입력받아 해당하는 Controller 반환
-     * @param levelFlag
-     * @return
+     * Handler 실행
+     *
+     * @return 다음 진행 LevelFlag 값
      */
-    Controller get(LevelFlag levelFlag);
+    LevelFlag handle();
 }

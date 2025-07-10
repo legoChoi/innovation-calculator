@@ -14,4 +14,9 @@ public class CircleCalculatorPostProcessController extends AbstractCalculatorPos
     protected LevelFlag getCurrentPostProcessLevelFlag() {
         return LevelFlag.CIRCLE_CALCULATOR_POST_PROCESS;
     }
+
+    @Override
+    public LevelFlag handle() {
+        return run();
+    }
 }
