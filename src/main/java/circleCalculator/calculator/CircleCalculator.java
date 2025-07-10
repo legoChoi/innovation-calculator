@@ -35,7 +35,9 @@ public class CircleCalculator<T extends Number> extends Calculator<T> {
 
     @Override
     public void removeFirst() {
-        this.memory.remove(0);
+        if (!this.memory.isEmpty()) {
+            this.memory.remove(0);
+        }
     }
 
     @Override

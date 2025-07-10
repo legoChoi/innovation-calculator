@@ -6,7 +6,7 @@ import circleCalculator.controller.Controller;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MainHandler implements Handler<Controller, LevelFlag> {
+public class MainHandler implements Handler {
 
     private final Controller mainMenuController;
     private final Controller calculatorMenuController;

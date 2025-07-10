@@ -1,6 +1,9 @@
 package circleCalculator.handler;
 
-public interface Handler<T, C> {
+import circleCalculator.LevelFlag;
+import circleCalculator.controller.Controller;
 
-    T get(C command);
+public interface Handler {
+
+    Controller get(LevelFlag levelFlag);
 }
