@@ -1,16 +1,14 @@
 package circleCalculator.handler;
 
-import circleCalculator.calculator.controller.ArithmeticCalculatorController;
-import circleCalculator.calculator.controller.CalculatorController;
-import circleCalculator.calculator.controller.CircleCalculatorController;
+import circleCalculator.calculator.CalculatorController;
 import circleCalculator.command.CalculationCommand;
 
 public class CalculatorHandler implements Handler<CalculatorController, CalculationCommand> {
 
-    private final CircleCalculatorController circleCalculationController;
-    private final ArithmeticCalculatorController arithmeticCalculationController;
+    private final CalculatorController circleCalculationController;
+    private final CalculatorController arithmeticCalculationController;
 
-    public CalculatorHandler(CircleCalculatorController circleCalculationController, ArithmeticCalculatorController arithmeticCalculationController) {
+    public CalculatorHandler(CalculatorController circleCalculationController, CalculatorController arithmeticCalculationController) {
         this.circleCalculationController = circleCalculationController;
         this.arithmeticCalculationController = arithmeticCalculationController;
     }

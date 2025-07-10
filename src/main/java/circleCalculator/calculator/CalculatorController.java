@@ -1,4 +1,4 @@
-package circleCalculator.calculator.controller;
+package circleCalculator.calculator;
 
 public interface CalculatorController {
 

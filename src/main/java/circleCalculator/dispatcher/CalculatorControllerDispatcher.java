@@ -1,7 +1,7 @@
 package circleCalculator.dispatcher;
 
 import circleCalculator.util.Input;
-import circleCalculator.calculator.controller.CalculatorController;
+import circleCalculator.calculator.CalculatorController;
 import circleCalculator.exception.CustomRuntimeException;
 import circleCalculator.exception.ExceptionLogService;
 import circleCalculator.handler.CalculatorHandler;

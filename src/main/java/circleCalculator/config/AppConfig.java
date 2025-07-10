@@ -1,9 +1,9 @@
 package circleCalculator.config;
 
 import circleCalculator.calculator.CalculatorPostProcessor;
-import circleCalculator.calculator.controller.ArithmeticCalculatorController;
+import circleCalculator.calculator.ArithmeticCalculatorController;
 import circleCalculator.calculator.ArithmeticCalculator;
-import circleCalculator.calculator.controller.CircleCalculatorController;
+import circleCalculator.calculator.CircleCalculatorController;
 import circleCalculator.calculator.CircleCalculator;
 import circleCalculator.calculator.operator.*;
 import circleCalculator.dispatcher.CalculatorControllerDispatcher;
