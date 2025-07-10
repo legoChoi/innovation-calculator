@@ -6,10 +6,13 @@ import circleCalculator.calculator.ArithmeticCalculator;
 import circleCalculator.calculator.CircleCalculatorController;
 import circleCalculator.calculator.CircleCalculator;
 import circleCalculator.calculator.operator.*;
+import circleCalculator.controller.*;
 import circleCalculator.dispatcher.CalculatorControllerDispatcher;
+import circleCalculator.dispatcher.MainDispatcher;
 import circleCalculator.dispatcher.MenuDispatcher;
 import circleCalculator.exception.ExceptionLogRepository;
 import circleCalculator.exception.ExceptionLogService;
+import circleCalculator.handler.MainHandler;
 import circleCalculator.menu.LogMenu;
 import circleCalculator.handler.CalculatorHandler;
 import circleCalculator.handler.MenuHandler;
@@ -79,10 +82,39 @@ public class AppConfig {
             exceptionLogService,
             menuHandler
     );
+
     public MenuDispatcher controllerDispatcher() {
         return menuDispatcher;
     }
+
     public void exit() {
         scanner.close();
+    }
+
+    private final Controller mainMenuController = new MainMenuController(input);
+    private final Controller calculatorMenuController = new CalculatorMenuController(input);
+    private final Controller logMenuController = new LogMenuController(input, exceptionLogService);
+    private final Controller arithmeticCalController = new ArithmeticCalController(input, arithmeticCalculator);
+    private final Controller arithmeticCalculatorPostProcessController = new ArithmeticCalculatorPostProcessController(input, arithmeticCalculator);
+    private final Controller circleCalculatorPostProcessController = new CircleCalculatorPostProcessController(input, circleCalculator);
+    private final Controller circleCalController = new CircleCalController(input, circleCalculator);
+
+    private final MainHandler mainHandler = new MainHandler(
+            mainMenuController,
+            calculatorMenuController,
+            logMenuController,
+            arithmeticCalController,
+            arithmeticCalculatorPostProcessController,
+            circleCalController,
+            circleCalculatorPostProcessController
+    );
+
+    private final MainDispatcher mainDispatcher = new MainDispatcher(
+            exceptionLogService,
+            mainHandler
+    );
+
+    public MainDispatcher mainDispatcher() {
+        return mainDispatcher;
     }
 }
