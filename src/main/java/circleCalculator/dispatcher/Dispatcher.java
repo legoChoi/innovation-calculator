@@ -31,7 +31,7 @@ public class Dispatcher {
 
                 if (controller == null) break; // LevelFlag.EXIT
 
-                state = handlerAdapter.handle(controller); // 작업 실행
+                state = handlerAdapter.handle(controller).state(); // 작업 실행
             } catch (CustomRuntimeException e) {
                 exceptionLogService.saveLog(state.getTitle(), e.getMessage());
             }

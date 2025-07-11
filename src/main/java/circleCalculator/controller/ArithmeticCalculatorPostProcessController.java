@@ -2,6 +2,7 @@ package circleCalculator.controller;
 
 import circleCalculator.State;
 import circleCalculator.calculator.ArithmeticCalculator;
+import circleCalculator.controller.response.ControllerResponse;
 import circleCalculator.util.Input;
 
 public class ArithmeticCalculatorPostProcessController extends AbstractCalculatorPostProcessController {
@@ -16,7 +17,7 @@ public class ArithmeticCalculatorPostProcessController extends AbstractCalculato
     }
 
     @Override
-    public State handle() {
+    public ControllerResponse handle() {
         return run();
     }
 }

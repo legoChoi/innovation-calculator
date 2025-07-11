@@ -1,13 +1,12 @@
 package circleCalculator.handler;
 
-import circleCalculator.State;
+import circleCalculator.controller.response.ControllerResponse;
 
 public interface Handler {
 
     /**
      * Handler 실행
-     *
-     * @return 다음 진행 LevelFlag 값
+     * @return ControllerResponse
      */
-    State handle();
+    ControllerResponse handle();
 }

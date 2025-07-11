@@ -1,7 +1,7 @@
 package circleCalculator.controller;
 
-import circleCalculator.State;
 import circleCalculator.command.MainMenuCommand;
+import circleCalculator.controller.response.ControllerResponse;
 import circleCalculator.util.Input;
 
 public class MainMenuController implements Controller {
@@ -13,15 +13,15 @@ public class MainMenuController implements Controller {
     }
 
     @Override
-    public State run() {
+    public ControllerResponse run() {
         MainMenuCommand.print();
         MainMenuCommand command = MainMenuCommand.findByIndexOrCommand(input.readLine());
 
-        return command.getLevelFlag();
+        return new ControllerResponse(command.getLevelFlag());
     }
 
     @Override
-    public State handle() {
+    public ControllerResponse handle() {
         return run();
     }
 }
