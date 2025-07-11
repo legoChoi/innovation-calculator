@@ -1,6 +1,6 @@
 package circleCalculator.controller;
 
-import circleCalculator.LevelFlag;
+import circleCalculator.State;
 import circleCalculator.calculator.ArithmeticCalculator;
 import circleCalculator.util.Input;
 
@@ -11,12 +11,12 @@ public class ArithmeticCalculatorPostProcessController extends AbstractCalculato
     }
 
     @Override
-    protected LevelFlag getCurrentPostProcessLevelFlag() {
-        return LevelFlag.ARITHEMETIC_CALCULATOR_POST_PROCESS;
+    protected State getCurrentPostProcessLevelFlag() {
+        return State.ARITHEMETIC_CALCULATOR_POST_PROCESS;
     }
 
     @Override
-    public LevelFlag handle() {
+    public State handle() {
         return run();
     }
 }

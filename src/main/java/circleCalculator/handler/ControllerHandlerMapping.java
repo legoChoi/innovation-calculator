@@ -1,6 +1,6 @@
 package circleCalculator.handler;
 
-import circleCalculator.LevelFlag;
+import circleCalculator.State;
 import circleCalculator.controller.Controller;
 
 import java.util.HashMap;
@@ -16,7 +16,7 @@ public class ControllerHandlerMapping implements HandlerMapping {
     private final Controller circleCalculatorPostProcessController;
     private final Controller circleCalculatorController;
 
-    private final Map<LevelFlag, Controller> controllerMap = new HashMap<>();
+    private final Map<State, Controller> controllerMap = new HashMap<>();
 
     public ControllerHandlerMapping(Controller mainMenuController, Controller calculatorMenuController, Controller logMenuController, Controller arithmeticCalculatorController, Controller arithmeticCalculatorPostProcessController, Controller circleCalculatorController, Controller circleCalculatorPostProcessController) {
         this.mainMenuController = mainMenuController;
@@ -31,18 +31,18 @@ public class ControllerHandlerMapping implements HandlerMapping {
     }
 
     private void init() {
-        controllerMap.put(LevelFlag.MAIN_MENU, mainMenuController);
-        controllerMap.put(LevelFlag.CALCULATOR_MENU, calculatorMenuController);
-        controllerMap.put(LevelFlag.LOG_MENU, logMenuController);
-        controllerMap.put(LevelFlag.ARITHEMETIC_CALCULATOR_PROCESS, arithmeticCalculatorController);
-        controllerMap.put(LevelFlag.ARITHEMETIC_CALCULATOR_POST_PROCESS, arithmeticCalculatorPostProcessController);
-        controllerMap.put(LevelFlag.CIRCLE_CALCULATOR_PROCESS, circleCalculatorController);
-        controllerMap.put(LevelFlag.CIRCLE_CALCULATOR_POST_PROCESS, circleCalculatorPostProcessController);
-        controllerMap.put(LevelFlag.EXIT, null);
+        controllerMap.put(State.MAIN_MENU, mainMenuController);
+        controllerMap.put(State.CALCULATOR_MENU, calculatorMenuController);
+        controllerMap.put(State.LOG_MENU, logMenuController);
+        controllerMap.put(State.ARITHEMETIC_CALCULATOR_PROCESS, arithmeticCalculatorController);
+        controllerMap.put(State.ARITHEMETIC_CALCULATOR_POST_PROCESS, arithmeticCalculatorPostProcessController);
+        controllerMap.put(State.CIRCLE_CALCULATOR_PROCESS, circleCalculatorController);
+        controllerMap.put(State.CIRCLE_CALCULATOR_POST_PROCESS, circleCalculatorPostProcessController);
+        controllerMap.put(State.EXIT, null);
     }
 
     @Override
-    public Controller getHandler(LevelFlag levelFlag) {
-        return controllerMap.get(levelFlag);
+    public Controller getHandler(State state) {
+        return controllerMap.get(state);
     }
 }

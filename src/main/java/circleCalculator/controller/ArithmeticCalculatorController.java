@@ -1,7 +1,7 @@
 package circleCalculator.controller;
 
 import circleCalculator.calculator.ArithmeticCalculator;
-import circleCalculator.LevelFlag;
+import circleCalculator.State;
 import circleCalculator.util.Input;
 
 public class ArithmeticCalculatorController implements Controller {
@@ -15,7 +15,7 @@ public class ArithmeticCalculatorController implements Controller {
     }
 
     @Override
-    public LevelFlag run() {
+    public State run() {
         System.out.println();
         System.out.print("첫 번째 숫자를 입력하세요: ");
         double a = input.readDouble();
@@ -35,11 +35,11 @@ public class ArithmeticCalculatorController implements Controller {
 
         input.readLine();
 
-        return LevelFlag.ARITHEMETIC_CALCULATOR_POST_PROCESS;
+        return State.ARITHEMETIC_CALCULATOR_POST_PROCESS;
     }
 
     @Override
-    public LevelFlag handle() {
+    public State handle() {
         return run();
     }
 }

@@ -1,6 +1,6 @@
 package circleCalculator.command;
 
-import circleCalculator.LevelFlag;
+import circleCalculator.State;
 import circleCalculator.exception.CalculatorException;
 import circleCalculator.exception.CustomRuntimeException;
 
@@ -8,23 +8,23 @@ import java.util.Arrays;
 
 public enum LogMenuCommand {
 
-    PRINT("print", "1", LevelFlag.LOG_MENU),
-    CLEAR("clear", "2", LevelFlag.LOG_MENU),
-    BACK("BACK", "3", LevelFlag.MAIN_MENU)
+    PRINT("print", "1", State.LOG_MENU),
+    CLEAR("clear", "2", State.LOG_MENU),
+    BACK("BACK", "3", State.MAIN_MENU)
     ;
 
     private final String command;
     private final String index;
-    private final LevelFlag levelFlag;
+    private final State state;
 
-    LogMenuCommand(String command, String index, LevelFlag levelFlag) {
+    LogMenuCommand(String command, String index, State state) {
         this.command = command;
         this.index = index;
-        this.levelFlag = levelFlag;
+        this.state = state;
     }
 
-    public LevelFlag getLevelFlag() {
-        return levelFlag;
+    public State getLevelFlag() {
+        return state;
     }
 
     public static void print() {

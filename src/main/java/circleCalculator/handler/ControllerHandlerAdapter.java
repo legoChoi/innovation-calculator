@@ -1,12 +1,12 @@
 package circleCalculator.handler;
 
-import circleCalculator.LevelFlag;
+import circleCalculator.State;
 import circleCalculator.controller.Controller;
 
 public class ControllerHandlerAdapter implements HandlerAdapter {
 
     @Override
-    public LevelFlag handle(Controller controller) {
+    public State handle(Controller controller) {
         return controller.handle();
     }
 }

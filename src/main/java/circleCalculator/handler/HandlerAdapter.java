@@ -1,6 +1,6 @@
 package circleCalculator.handler;
 
-import circleCalculator.LevelFlag;
+import circleCalculator.State;
 import circleCalculator.controller.Controller;
 
 public interface HandlerAdapter {
@@ -11,5 +11,5 @@ public interface HandlerAdapter {
      * @param controller 현재는 단일 핸들러(Controller)만 존재
      * @return 다음 진행 LevelFlag 값
      */
-    LevelFlag handle(Controller controller);
+    State handle(Controller controller);
 }

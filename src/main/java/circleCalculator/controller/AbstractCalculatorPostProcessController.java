@@ -1,6 +1,6 @@
 package circleCalculator.controller;
 
-import circleCalculator.LevelFlag;
+import circleCalculator.State;
 import circleCalculator.calculator.Calculator;
 import circleCalculator.command.PostProcessMenuCommand;
 import circleCalculator.util.Input;
@@ -19,10 +19,10 @@ public abstract class AbstractCalculatorPostProcessController implements Control
      * 루프 중 예외가 발생 할 경우 현재 작업 다시 시작하기 위한 메소드
      * @return 현재 작업 위치에 해당하는 LevelFlag 값 반환
      */
-    protected abstract LevelFlag getCurrentPostProcessLevelFlag();
+    protected abstract State getCurrentPostProcessLevelFlag();
 
     @Override
-    public LevelFlag run() {
+    public State run() {
         PostProcessMenuCommand.print();
         PostProcessMenuCommand command = PostProcessMenuCommand.findByIndexOrCommand(input.readLine());
 
@@ -35,7 +35,7 @@ public abstract class AbstractCalculatorPostProcessController implements Control
                 input.readLine();
             }
             case EXIT -> {
-                return LevelFlag.CALCULATOR_MENU;
+                return State.CALCULATOR_MENU;
             }
         }
 

@@ -1,7 +1,7 @@
 package circleCalculator.controller;
 
 import circleCalculator.calculator.CircleCalculator;
-import circleCalculator.LevelFlag;
+import circleCalculator.State;
 import circleCalculator.util.Input;
 
 public class CircleCalculatorController implements Controller {
@@ -15,7 +15,7 @@ public class CircleCalculatorController implements Controller {
     }
 
     @Override
-    public LevelFlag run() {
+    public State run() {
         System.out.println();
         System.out.print("반지름을 입력하세요: ");
         double radius = input.readDouble();
@@ -30,11 +30,11 @@ public class CircleCalculatorController implements Controller {
         input.readLine();
 
 
-        return LevelFlag.CIRCLE_CALCULATOR_POST_PROCESS;
+        return State.CIRCLE_CALCULATOR_POST_PROCESS;
     }
 
     @Override
-    public LevelFlag handle() {
+    public State handle() {
         return run();
     }
 }

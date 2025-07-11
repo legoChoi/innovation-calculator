@@ -1,6 +1,6 @@
 package circleCalculator.handler;
 
-import circleCalculator.LevelFlag;
+import circleCalculator.State;
 
 public interface Handler {
 
@@ -9,5 +9,5 @@ public interface Handler {
      *
      * @return 다음 진행 LevelFlag 값
      */
-    LevelFlag handle();
+    State handle();
 }

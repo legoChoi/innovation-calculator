@@ -3,7 +3,7 @@ package circleCalculator;
 /**
  * 현재 위치
  */
-public enum LevelFlag {
+public enum State {
     MAIN_MENU("[MAIN_MENU]"),
     CALCULATOR_MENU("[CALCULATOR_MENU]"),
     LOG_MENU("[LOG_MENU]"),
@@ -16,7 +16,7 @@ public enum LevelFlag {
 
     private final String title;
 
-    LevelFlag(String title) {
+    State(String title) {
         this.title = title;
     }
 
