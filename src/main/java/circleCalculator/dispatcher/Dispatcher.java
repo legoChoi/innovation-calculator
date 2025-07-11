@@ -1,6 +1,7 @@
 package circleCalculator.dispatcher;
 
 import circleCalculator.State;
+import circleCalculator.context.StateContext;
 import circleCalculator.controller.Controller;
 import circleCalculator.exception.CustomRuntimeException;
 import circleCalculator.exception.ExceptionLogService;
@@ -12,13 +13,13 @@ public class Dispatcher {
     private final ExceptionLogService exceptionLogService;
     private final HandlerMapping handlerMapping;
     private final HandlerAdapter handlerAdapter;
+    private final StateContext stateContext;
 
-    private State state = State.MAIN_MENU;
-
-    public Dispatcher(ExceptionLogService exceptionLogService, HandlerMapping handlerMapping, HandlerAdapter handlerAdapter) {
+    public Dispatcher(ExceptionLogService exceptionLogService, HandlerMapping handlerMapping, HandlerAdapter handlerAdapter, StateContext stateContext) {
         this.exceptionLogService = exceptionLogService;
         this.handlerMapping = handlerMapping;
         this.handlerAdapter = handlerAdapter;
+        this.stateContext = stateContext;
     }
 
     /**
@@ -27,13 +28,14 @@ public class Dispatcher {
     public void dispatch() {
         while (true) {
             try {
-                Controller controller = handlerMapping.getHandler(state); // handler로 부터 state에 해당하는 controller 반환
+                Controller controller = handlerMapping.getHandler(stateContext.getCurrentState()); // handler로 부터 state에 해당하는 controller 반환
 
                 if (controller == null) break; // State.EXIT
 
-                state = handlerAdapter.handle(controller).state(); // 작업 실행
+                State state = handlerAdapter.handle(controller).state(); // 작업 실행
+                stateContext.setState(state);
             } catch (CustomRuntimeException e) {
-                exceptionLogService.saveLog(state.getTitle(), e.getMessage());
+                exceptionLogService.saveLog(stateContext.getCurrentState().getTitle(), e.getMessage());
             }
         }
     }

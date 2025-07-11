@@ -6,7 +6,7 @@ public class StateContext {
 
     private State state = State.MAIN_MENU;
 
-    public State getState() {
+    public State getCurrentState() {
         return state;
     }
 

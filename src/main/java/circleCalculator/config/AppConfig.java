@@ -4,6 +4,7 @@ import circleCalculator.AppRunner;
 import circleCalculator.calculator.ArithmeticCalculator;
 import circleCalculator.calculator.CircleCalculator;
 import circleCalculator.calculator.operator.*;
+import circleCalculator.context.StateContext;
 import circleCalculator.controller.*;
 import circleCalculator.dispatcher.Dispatcher;
 import circleCalculator.exception.ExceptionLogRepository;
@@ -18,6 +19,7 @@ import java.util.Scanner;
 
 public class AppConfig {
 
+    private final StateContext stateContext = new StateContext();
     private final Scanner scanner = new Scanner(System.in);
     private final Input input = new Input(scanner);
     private final ExceptionLogRepository exceptionLogRepository = new ExceptionLogRepository();
@@ -63,7 +65,8 @@ public class AppConfig {
     private final Dispatcher dispatcher = new Dispatcher(
             exceptionLogService,
             handlerMapping,
-            handlerAdapter
+            handlerAdapter,
+            stateContext
     );
 
     private final AppRunner appRunner = new AppRunner(dispatcher);
