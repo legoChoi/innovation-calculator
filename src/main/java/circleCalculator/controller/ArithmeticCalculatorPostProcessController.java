@@ -12,7 +12,7 @@ public class ArithmeticCalculatorPostProcessController extends AbstractCalculato
     }
 
     @Override
-    protected State getCurrentPostProcessLevelFlag() {
+    protected State getCurrentPostProcessState() {
         return State.ARITHEMETIC_CALCULATOR_POST_PROCESS;
     }
 

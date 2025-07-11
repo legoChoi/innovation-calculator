@@ -10,7 +10,7 @@ public enum LogMenuCommand {
 
     PRINT("print", "1", State.LOG_MENU),
     CLEAR("clear", "2", State.LOG_MENU),
-    BACK("BACK", "3", State.MAIN_MENU)
+    BACK("BACK", "3", State.MAIN_MENU),
     ;
 
     private final String command;
@@ -23,7 +23,7 @@ public enum LogMenuCommand {
         this.state = state;
     }
 
-    public State getLevelFlag() {
+    public State getState() {
         return state;
     }
 

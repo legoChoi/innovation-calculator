@@ -23,7 +23,7 @@ public enum CalculatorMenuCommand {
         this.state = state;
     }
 
-    public State getLevelFlag() {
+    public State getState() {
         return state;
     }
 

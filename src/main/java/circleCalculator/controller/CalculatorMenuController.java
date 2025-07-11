@@ -17,7 +17,7 @@ public class CalculatorMenuController implements Controller {
         CalculatorMenuCommand.print();
         CalculatorMenuCommand command = CalculatorMenuCommand.findByIndexOrCommand(input.readLine());
 
-        return new ControllerResponse(command.getLevelFlag());
+        return new ControllerResponse(command.getState());
     }
 
     @Override

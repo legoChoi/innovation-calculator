@@ -12,7 +12,7 @@ public class CircleCalculatorPostProcessController extends AbstractCalculatorPos
     }
 
     @Override
-    protected State getCurrentPostProcessLevelFlag() {
+    protected State getCurrentPostProcessState() {
         return State.CIRCLE_CALCULATOR_POST_PROCESS;
     }
 

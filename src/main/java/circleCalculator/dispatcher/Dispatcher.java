@@ -27,9 +27,9 @@ public class Dispatcher {
     public void dispatch() {
         while (true) {
             try {
-                Controller controller = handlerMapping.getHandler(state); // handler로 부터 LevelFlag에 해당하는 controller 반환
+                Controller controller = handlerMapping.getHandler(state); // handler로 부터 state에 해당하는 controller 반환
 
-                if (controller == null) break; // LevelFlag.EXIT
+                if (controller == null) break; // State.EXIT
 
                 state = handlerAdapter.handle(controller).state(); // 작업 실행
             } catch (CustomRuntimeException e) {

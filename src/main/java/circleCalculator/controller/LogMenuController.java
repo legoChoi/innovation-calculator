@@ -25,7 +25,7 @@ public class LogMenuController implements Controller {
             case CLEAR -> exceptionLogService.clearLogList();
         }
 
-        return new ControllerResponse(command.getLevelFlag());
+        return new ControllerResponse(command.getState());
     }
 
     @Override

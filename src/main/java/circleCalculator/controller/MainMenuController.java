@@ -17,7 +17,7 @@ public class MainMenuController implements Controller {
         MainMenuCommand.print();
         MainMenuCommand command = MainMenuCommand.findByIndexOrCommand(input.readLine());
 
-        return new ControllerResponse(command.getLevelFlag());
+        return new ControllerResponse(command.getState());
     }
 
     @Override
