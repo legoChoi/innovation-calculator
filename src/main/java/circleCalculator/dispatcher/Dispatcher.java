@@ -10,16 +10,21 @@ import circleCalculator.handler.HandlerMapping;
 
 public class Dispatcher {
 
-    private final ExceptionLogService exceptionLogService;
+    private final StateContext stateContext;
     private final HandlerMapping handlerMapping;
     private final HandlerAdapter handlerAdapter;
-    private final StateContext stateContext;
+    private final ExceptionLogService exceptionLogService;
 
-    public Dispatcher(ExceptionLogService exceptionLogService, HandlerMapping handlerMapping, HandlerAdapter handlerAdapter, StateContext stateContext) {
-        this.exceptionLogService = exceptionLogService;
+    public Dispatcher(
+            StateContext stateContext,
+            HandlerMapping handlerMapping,
+            HandlerAdapter handlerAdapter,
+            ExceptionLogService exceptionLogService
+    ) {
+        this.stateContext = stateContext;
         this.handlerMapping = handlerMapping;
         this.handlerAdapter = handlerAdapter;
-        this.stateContext = stateContext;
+        this.exceptionLogService = exceptionLogService;
     }
 
     /**

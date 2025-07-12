@@ -1,6 +1,5 @@
 package circleCalculator.controller;
 
-import circleCalculator.State;
 import circleCalculator.controller.response.ControllerResponse;
 import circleCalculator.handler.Handler;
 

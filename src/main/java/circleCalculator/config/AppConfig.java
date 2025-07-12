@@ -45,28 +45,27 @@ public class AppConfig {
     private final Controller mainMenuController = new MainMenuController(input);
     private final Controller calculatorMenuController = new CalculatorMenuController(input);
     private final Controller logMenuController = new LogMenuController(input, exceptionLogService);
-    private final Controller arithmeticCalController = new ArithmeticCalculatorController(input, arithmeticCalculator);
-    private final Controller arithmeticCalculatorPostProcessController = new ArithmeticCalculatorPostProcessController(input, arithmeticCalculator);
+    private final Controller circleCalculatorController = new CircleCalculatorController(input, circleCalculator);
+    private final Controller arithmeticCalculatorController = new ArithmeticCalculatorController(input, arithmeticCalculator);
     private final Controller circleCalculatorPostProcessController = new CircleCalculatorPostProcessController(input, circleCalculator);
-    private final Controller circleCalController = new CircleCalculatorController(input, circleCalculator);
-
+    private final Controller arithmeticCalculatorPostProcessController = new ArithmeticCalculatorPostProcessController(input, arithmeticCalculator);
     private final HandlerMapping handlerMapping = new ControllerHandlerMapping(
+            logMenuController,
             mainMenuController,
             calculatorMenuController,
-            logMenuController,
-            arithmeticCalController,
-            arithmeticCalculatorPostProcessController,
-            circleCalController,
-            circleCalculatorPostProcessController
+            circleCalculatorController,
+            arithmeticCalculatorController,
+            circleCalculatorPostProcessController,
+            arithmeticCalculatorPostProcessController
     );
 
     private final HandlerAdapter handlerAdapter = new ControllerHandlerAdapter() {};
 
     private final Dispatcher dispatcher = new Dispatcher(
-            exceptionLogService,
+            stateContext,
             handlerMapping,
             handlerAdapter,
-            stateContext
+            exceptionLogService
     );
 
     private final AppRunner appRunner = new AppRunner(dispatcher);
